@@ -64,6 +64,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : ComponentActivity() {
+	@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 	@OptIn(ExperimentalMaterial3Api::class)
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -98,9 +99,12 @@ class MainActivity : ComponentActivity() {
 									)
 								})
 						},
-						content = displayImage()
 
-					)
+					) {
+
+						// on below line we are calling our function.
+						displayImage()
+					}
 				}
 			}
 		}
@@ -110,7 +114,7 @@ class MainActivity : ComponentActivity() {
 // on below line we are creating a
 // function to read image from file path.
 @Composable
-fun displayImage(): @Composable (PaddingValues) -> Unit {
+fun displayImage() {
 
 	// on below line we are creating a column on below sides.
 	Column(
