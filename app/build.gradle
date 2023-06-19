@@ -60,6 +60,9 @@ dependencies {
     implementation "androidx.compose.foundation:foundation:1.4.3"
     implementation "androidx.compose.foundation:foundation-layout:1.4.3"
     implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.paging:paging-common-ktx:3.1.1'
+    implementation 'androidx.paging:paging-compose:3.2.0-beta01'
+    implementation 'com.google.android.datatransport:transport-runtime:3.1.9'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -83,4 +86,19 @@ dependencies {
 
     //Icons
     implementation "androidx.compose.material:material-icons-extended:1.4.3"
+
+    //Permissions
+    implementation("com.google.accompanist:accompanist-permissions:0.18.0")
+
+    //ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1"
+
+    implementation("androidx.datastore:datastore-preferences-rxjava2:1.0.0")
+    implementation("androidx.datastore:datastore-preferences-core:1.0.0")
+    implementation 'androidx.datastore:datastore-core:1.0.0'
+
+    implementation 'io.ak1:rang-vikalp:1.0.0-alpha02'
+
+
 }

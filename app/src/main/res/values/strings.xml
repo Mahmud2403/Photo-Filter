@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Photo Filter</string>
+    <string name="icn_camera_view_switch_camera_content_description">Camera\n</string>
+    <string name="icn_camera_view_camera_shutter_content_description">Shutter</string>
+    <string name="icn_camera_view_view_gallery_content_description">Gallery</string>
+    <string name="permission_prompt">Please allow access to the permissions to help us work better.</string>
+    <string name="permission_prompt_button">Let\'s go</string>
+    <string name="permissions_rationale">Permission is denied. Please grant access in settings to use this app.</string>
+    <string name="open_settings">Open Settings</string>
 </resources>

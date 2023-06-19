@@ -1,7 +1,9 @@
 package com.example.photofilter.ui.theme
 
 import android.app.Activity
+import android.content.res.Configuration
 import android.os.Build
+import android.view.Window
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -10,10 +12,17 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
+import com.example.photofilter.local.dataStore
+import com.example.photofilter.local.isDarkThemeOn
+import com.example.photofilter.local.themePreferenceKey
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 
 private val DarkColorScheme = darkColorScheme(
 	primary = Purple80,
@@ -67,4 +76,23 @@ fun PhotoFilterTheme(
 		typography = Typography,
 		content = content
 	)
+}
+
+@Composable
+fun isSystemInDarkThemeCustom(): Boolean {
+	val context = LocalContext.current
+	val exampleData = runBlocking { context.dataStore.data.first() }
+	val theme = context.isDarkThemeOn().collectAsState(initial = exampleData[themePreferenceKey] ?: 0)
+	return when (theme.value) {
+		2 -> true
+		1 -> false
+		else -> context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+	}
+}
+
+@Composable
+fun Window.StatusBarConfig(darkTheme: Boolean) {
+	WindowInsetsControllerCompat(this, this.decorView).isAppearanceLightStatusBars =
+		!darkTheme
+	this.statusBarColor = MaterialTheme.colorScheme.background.toArgb()
 }
